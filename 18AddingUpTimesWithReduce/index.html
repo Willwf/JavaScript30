@@ -189,9 +189,17 @@
 
     const totalSeconds = videoDurations
       .map(duration => (duration.dataset.time).split(':')
-      .map(parseFloat))
+        .map(parseFloat))
       .map(([min, sec]) => min * 60 + sec)
       .reduce((firstvalue, secondvalue) => firstvalue + secondvalue);
+
+    // The same above using only a reduce
+    // const totalSeconds = videoDurations.reduce((acc, value) => {
+    //   videoInMinutes = value.dataset.time.split(':').map(parseFloat);
+    //   const [min, sec] = videoInMinutes;
+    //   videoInSeconds = min * 60 + sec;
+    //   return acc + videoInSeconds;
+    // }, 0);
 
     const hours = Math.floor(totalSeconds / 3600);
     let secondsLeft = totalSeconds % 3600
